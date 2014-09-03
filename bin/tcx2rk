@@ -1,0 +1,21 @@
+#!/usr/bin/env python
+
+import argh
+import sys
+
+from os.path import (
+    basename,
+    dirname,
+    realpath,
+)
+
+bin_parent_folder = dirname(dirname(realpath(__file__)))
+if basename(bin_parent_folder) == 'tcx2rk':
+    # When testing ensure the development files are on the path
+    sys.path.append(bin_parent_folder)
+
+from tcx2rk.__main__ import main
+
+
+if __name__ == '__main__':
+    argh.dispatch_command(main)

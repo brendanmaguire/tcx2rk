@@ -1,0 +1,7 @@
+*.pyc
+*.swo
+*.swp
+.ropeproject/
+.venv/
+dist/
+tcx2rk.egg-info/
