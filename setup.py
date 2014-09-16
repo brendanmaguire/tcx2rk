@@ -15,8 +15,11 @@ if sys.argv[-1] == 'publish':
     os.system('python setup.py sdist upload')
     sys.exit()
 
-with open('README.markdown') as f:
-    readme = f.read()
+try:
+    import pypandoc
+    description = pypandoc.convert('README.markdown', 'rst')
+except (IOError, ImportError):
+    description = ''
 
 requires = [
     'argh==0.24.1',
@@ -28,10 +31,12 @@ setup(
     name='tcx2rk',
     version=__version__,
     description='Convert TCX files to the Runkeeper format',
-    long_description=readme,
+    long_description=description,
     author='Brendan Maguire',
     author_email='maguire.brendan@gmail.com',
     install_requires=requires,
     license='Apache 2.0',
     scripts=['bin/tcx2rk'],
+    url='https://github.com/brendanmaguire/tcx2rk',
+    packages=['tcx2rk'],
 )
