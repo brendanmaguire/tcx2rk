@@ -80,7 +80,8 @@ class Activity(object):
 
     @staticmethod
     def _get_lap_trackpoints(lap):
-        return lap['Track']['Trackpoint']
+        trackpoints = lap['Track']['Trackpoint']
+        return trackpoints if isinstance(trackpoints, list) else [trackpoints]
 
     @staticmethod
     def _get_lap_distance(lap):

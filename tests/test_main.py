@@ -17,6 +17,9 @@ class TestMain(unittest.TestCase):
     def test_convert_tcx_file_single_lap(self):
         self.assert_conversion('test_single_lap')
 
+    def test_convert_tcx_file_lap_with_single_trackpoint(self):
+        self.assert_conversion('test_lap_with_single_trackpoint')
+
     def assert_conversion(self, test_file_prefix):
         tcx_filepath = os.path.join(
             self._our_dir, 'data', '%s.tcx' % test_file_prefix)
