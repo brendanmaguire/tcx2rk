@@ -4,7 +4,12 @@ import os
 import sys
 
 # Sets __version__
-execfile('tcx2rk/_version.py')
+try:
+    # Works with Python 2.x
+    execfile('tcx2rk/_version.py')
+except NameError:
+    # Works with Python 3.x
+    exec(open('tcx2rk/_version.py').read())
 
 try:
     from setuptools import setup
