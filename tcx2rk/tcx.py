@@ -80,6 +80,9 @@ class Activity(object):
 
     @staticmethod
     def _get_lap_trackpoints(lap):
+        if 'Track' not in lap:
+            return []
+
         trackpoints = lap['Track']['Trackpoint']
         return trackpoints if isinstance(trackpoints, list) else [trackpoints]
 
